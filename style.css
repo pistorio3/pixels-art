@@ -21,23 +21,30 @@
   display: inline-block;
 }
 
-#color1 {
+.one {
   background-color: black;
 }
 
-#color2 {
+.two {
   background-color: green;
 }
 
-#color3 {
+.three {
   background-color: red;
 }
 
-#color4 {
+.four {
   background-color: yellow;
 }
 
-#color5 {
-  background-color: blue;
+#pixel-board {
+  text-align: center;
+  padding-top: 50px;
 }
 
+.pixel {
+  border: black solid 1px;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
