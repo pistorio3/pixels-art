@@ -46,3 +46,8 @@ for (let j = 0; j < 5; j += 1) {
   pixel.className = 'pixel';
   linha5.appendChild(pixel);
 }
+
+window.onload = () => {
+  const init = document.getElementById('one');
+  init.className += ' selected';
+};

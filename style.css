@@ -16,24 +16,24 @@
 
 .color {
   border: black solid 1px;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: inline-block;
 }
 
-.one {
+.color-one {
   background-color: black;
 }
 
-.two {
+.color-two {
   background-color: green;
 }
 
-.three {
+.color-three {
   background-color: red;
 }
 
-.four {
+.color-four {
   background-color: yellow;
 }
 
