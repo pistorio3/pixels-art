@@ -1,8 +1,8 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   border: 0;
-} */
+}
 
 #title {
   text-align: center;
@@ -21,19 +21,23 @@
   display: inline-block;
 }
 
-.color-one {
+.color:hover {
+  cursor: pointer;
+}
+
+#one {
   background-color: black;
 }
 
-.color-two {
+#two {
   background-color: green;
 }
 
-.color-three {
+#three {
   background-color: red;
 }
 
-.color-four {
+#four {
   background-color: yellow;
 }
 
