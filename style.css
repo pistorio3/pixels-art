@@ -1,8 +1,8 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   border: 0;
-}
+} */
 
 #title {
   text-align: center;
@@ -42,15 +42,15 @@
   padding-top: 50px;
 }
 
-
+.linha1 , .linha2 , .linha3 , .linha4 , .linha5 {
+  height: 43px;
+}
 
 .pixel {
   border: black solid 1px;
-  /* margin: 1px; */
-  margin-left: 1px;
-  margin-bottom: 1px;
-  height: 50px;
-  width: 50px;
+  margin-right: 1px;
+  height: 40px;
+  width: 40px;
   display: inline-block;
   background-color: white;
 }
