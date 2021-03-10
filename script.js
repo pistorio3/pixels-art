@@ -176,9 +176,13 @@ function generateBoard(value) {
 
 // Evento onClick para gerar o board
 generate.onclick = () => {
-  if (input.value === '' || input.value > 50 || input.value < 5) {
+  if (input.value === '' || input.value < 5) {
     console.log('Board inválido!');
     alert('Board inválido!');
+  } else if (input.value > 50) {
+    deleteBoard();
+    generateBoard(50);
+    loadEvents();
   } else {
     deleteBoard();
     generateBoard(input.value);
