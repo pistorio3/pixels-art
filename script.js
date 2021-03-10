@@ -169,25 +169,25 @@ generate.onclick = () => {
   }
 };
 
-// document.querySelectorAll('.pixel').forEach((item, index) => {
-//   const el = item;
-//   el.addEventListener('click', () => {
-//     console.log(`click: ${index}`);
-//     el.style.backgroundColor = styleActual;
-//   });
-// });
+document.querySelectorAll('.pixel').forEach((item, index) => {
+  const el = item;
+  el.addEventListener('click', () => {
+    console.log(`click: ${index}`);
+    el.style.backgroundColor = styleActual;
+  });
+});
 
 // Preenche cor no pixel
-document.addEventListener('click', (event) => {
-  if (event.target.classList.contains('pixel')) {
-    console.log('evento ouvido');
+// document.addEventListener('click', (event) => {
+//   if (event.target.classList.contains('pixel')) {
+//     console.log('evento ouvido');
 
-    document.querySelectorAll('.pixel').forEach((item, index) => {
-      const el = item;
-      el.addEventListener('click', () => {
-        console.log(`click: ${index}`);
-        el.style.backgroundColor = styleActual;
-      });
-    });
-  }
-}, false);
+//     document.querySelectorAll('.pixel').forEach((item, index) => {
+//       const el = item;
+//       el.addEventListener('click', () => {
+//         console.log(`click: ${index}`);
+//         el.style.backgroundColor = styleActual;
+//       });
+//     });
+//   }
+// }, false);
