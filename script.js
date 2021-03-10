@@ -134,7 +134,7 @@ clear.onclick = () => {
     const el = item;
 
     console.log(`click: ${index}`);
-    el.style.backgroundColor = 'white';
+    el.style.backgroundColor = 'rgb(255,255,255)';
   });
 };
 
@@ -148,7 +148,7 @@ function generateBoard(value) {
     for (let j = 1; j <= value; j += 1) {
       const pixel = document.createElement('div');
       pixel.className = 'pixel';
-      pixel.style.backgroundColor = 'white';
+      pixel.style.backgroundColor = 'rgb(255,255,255)';
       linha.appendChild(pixel);
     }
   }
@@ -164,19 +164,20 @@ generate.onclick = () => {
   }
 };
 
-// Preenche cor no pixel
-document.addEventListener('click', (event) => {
-  if (event.target.classList.contains('pixel')) {
-    document.querySelectorAll('.pixel').forEach((item, index) => {
-      const el = item;
-      el.addEventListener('click', () => {
-        console.log(`click: ${index}`);
-        el.style.backgroundColor = styleActual;
-      });
-    });
+document.querySelectorAll('.pixel').forEach((item, index) => {
+  const el = item;
+  el.addEventListener('click', () => {
+    console.log(`click: ${index}`);
+    el.style.backgroundColor = styleActual;
+  });
+});
 
-    console.log('evento ouvido');
-    // console.log(`elemento: ${el}`);
-    // el.style.backgroundColor = styleActual;
-  }
-}, false);
+// // Preenche cor no pixel
+// document.addEventListener('click', (event) => {
+//   if (event.target.classList.contains('pixel')) {
+
+//     console.log('evento ouvido');
+//     // console.log(`elemento: ${el}`);
+//     // el.style.backgroundColor = styleActual;
+//   }
+// }, false);
