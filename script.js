@@ -5,11 +5,11 @@ const linha3 = document.createElement('div');
 const linha4 = document.createElement('div');
 const linha5 = document.createElement('div');
 
-linha1.className = 'linha1';
-linha2.className = 'linha2';
-linha3.className = 'linha3';
-linha4.className = 'linha4';
-linha5.className = 'linha5';
+linha1.className = 'linha1 li';
+linha2.className = 'linha2 li';
+linha3.className = 'linha3 li';
+linha4.className = 'linha4 li';
+linha5.className = 'linha5 li';
 
 board.appendChild(linha1);
 board.appendChild(linha2);
@@ -60,6 +60,16 @@ const color = 'color';
 const background = 'background-color';
 let styleActual = '';
 
+function loadEvents() {
+  document.querySelectorAll('.pixel').forEach((item, index) => {
+    const el = item;
+    el.addEventListener('click', () => {
+      console.log(`click: ${index}`);
+      el.style.backgroundColor = styleActual;
+    });
+  });
+}
+
 // Seleciona a cor preta como inicial
 window.onload = () => {
   const init = document.getElementById('one');
@@ -67,6 +77,8 @@ window.onload = () => {
 
   const styles = window.getComputedStyle(init).getPropertyValue(background);
   styleActual = styles;
+
+  loadEvents();
 };
 
 // Seleciona a cor 1 da paleta
@@ -138,12 +150,20 @@ clear.onclick = () => {
   });
 };
 
+// Função que remove o board
+function deleteBoard() {
+  document.querySelectorAll('.li').forEach((item) => {
+    console.log(item);
+    board.removeChild(item);
+  });
+}
+
 // Função que gera o board
 function generateBoard(value) {
   for (let i = 1; i <= value; i += 1) {
     const linha = document.createElement('div');
     board.appendChild(linha);
-    linha.className = `linha${i}`;
+    linha.className = `linha${i} li`;
 
     for (let j = 1; j <= value; j += 1) {
       const pixel = document.createElement('div');
@@ -160,22 +180,11 @@ generate.onclick = () => {
     console.log('Board inválido!');
     alert('Board inválido!');
   } else {
-    board.removeChild(linha1);
-    board.removeChild(linha2);
-    board.removeChild(linha3);
-    board.removeChild(linha4);
-    board.removeChild(linha5);
+    deleteBoard();
     generateBoard(input.value);
+    loadEvents();
   }
 };
-
-document.querySelectorAll('.pixel').forEach((item, index) => {
-  const el = item;
-  el.addEventListener('click', () => {
-    console.log(`click: ${index}`);
-    el.style.backgroundColor = styleActual;
-  });
-});
 
 // Preenche cor no pixel
 // document.addEventListener('click', (event) => {
