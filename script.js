@@ -52,8 +52,8 @@ const color2 = document.getElementById('two');
 const color3 = document.getElementById('three');
 const color4 = document.getElementById('four');
 const clear = document.getElementById('clear-board');
-// const generate = document.getElementById('generate-board');
-// const input = document.getElementById('board-size');
+const generate = document.getElementById('generate-board');
+const input = document.getElementById('board-size');
 
 const selected = 'color selected';
 const color = 'color';
@@ -154,15 +154,16 @@ clear.onclick = () => {
 //   }
 // }
 
-// // Evento onClick para gerar o board
-// generate.onclick = () => {
-//   if (input.value === '' || input.value > 50 || input.value < 5) {
-//     console.log('Board inválido!');
-//     alert('Board inválido!');
-//   } else {
-//     generateBoard(input.value);
-//   }
-// };
+// Evento onClick para gerar o board
+generate.onclick = () => {
+  if (input.value === '' || input.value > 50 || input.value < 5) {
+    console.log('Board inválido!');
+    alert('Board inválido!');
+  }
+  // else {
+  //   generateBoard(input.value);
+  // }
+};
 
 document.querySelectorAll('.pixel').forEach((item, index) => {
   const el = item;
