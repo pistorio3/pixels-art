@@ -43,7 +43,7 @@
 
 #pixel-board {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
 
 .linha1 , .linha2 , .linha3 , .linha4 , .linha5 {
@@ -64,4 +64,15 @@
   width: 40px;
   height: 40px;
   margin-right: 1px;
+}
+
+.container-button {
+  padding-top: 30px;
+  text-align: center;
+}
+
+#clear-board {
+  width: 100px;
+  height: 30px;
+  border-radius: 6%;
 }

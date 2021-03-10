@@ -51,6 +51,7 @@ const color1 = document.getElementById('one');
 const color2 = document.getElementById('two');
 const color3 = document.getElementById('three');
 const color4 = document.getElementById('four');
+const clear = document.getElementById('clear-board');
 
 const selected = 'color selected';
 const color = 'color';
@@ -65,6 +66,7 @@ window.onload = () => {
   styleActual = styles;
 };
 
+// Seleciona a cor 1 da paleta
 color1.onclick = () => {
   color1.addEventListener('click', console.log('click one'));
   color1.className = selected;
@@ -78,6 +80,7 @@ color1.onclick = () => {
   console.log(`Cor de fundo: ${styles1}`);
 };
 
+// Seleciona a cor 2 da paleta
 color2.onclick = () => {
   color2.addEventListener('click', console.log('click two'));
 
@@ -92,6 +95,7 @@ color2.onclick = () => {
   console.log(`Cor de fundo: ${styles2}`);
 };
 
+// Seleciona a cor 3 da paleta
 color3.onclick = () => {
   color3.addEventListener('click', console.log('click three'));
 
@@ -106,6 +110,7 @@ color3.onclick = () => {
   console.log(`Cor de fundo: ${styles3.backgroundColor}`);
 };
 
+// Seleciona a cor 4 da paleta
 color4.onclick = () => {
   console.log('click four');
 
@@ -120,6 +125,7 @@ color4.onclick = () => {
   console.log(`Cor de fundo: ${styles4.backgroundColor}`);
 };
 
+// Preenche Pixel
 document.querySelectorAll('.pixel').forEach((item, index) => {
   const el = item;
   item.addEventListener('click', () => {
@@ -127,3 +133,12 @@ document.querySelectorAll('.pixel').forEach((item, index) => {
     el.style.backgroundColor = styleActual;
   });
 });
+
+clear.onclick = () => {
+  document.querySelectorAll('.pixel').forEach((item, index) => {
+    const el = item;
+
+    console.log(`click: ${index}`);
+    el.style.backgroundColor = 'white';
+  });
+};
