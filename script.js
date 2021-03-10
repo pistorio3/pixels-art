@@ -1,63 +1,68 @@
 const board = document.getElementById('pixel-board');
-const linha1 = document.createElement('div');
-const linha2 = document.createElement('div');
-const linha3 = document.createElement('div');
-const linha4 = document.createElement('div');
-const linha5 = document.createElement('div');
+// const linha1 = document.createElement('div');
+// const linha2 = document.createElement('div');
+// const linha3 = document.createElement('div');
+// const linha4 = document.createElement('div');
+// const linha5 = document.createElement('div');
 
-linha1.className = 'linha1';
-linha2.className = 'linha2';
-linha3.className = 'linha3';
-linha4.className = 'linha4';
-linha5.className = 'linha5';
+// linha1.className = 'linha1';
+// linha2.className = 'linha2';
+// linha3.className = 'linha3';
+// linha4.className = 'linha4';
+// linha5.className = 'linha5';
 
-board.appendChild(linha1);
-board.appendChild(linha2);
-board.appendChild(linha3);
-board.appendChild(linha4);
-board.appendChild(linha5);
+// board.appendChild(linha1);
+// board.appendChild(linha2);
+// board.appendChild(linha3);
+// board.appendChild(linha4);
+// board.appendChild(linha5);
 
-for (let j = 0; j < 5; j += 1) {
-  const pixel = document.createElement('div');
-  pixel.className = 'pixel';
-  linha1.appendChild(pixel);
-}
+// const boardtest = document.getElementById('board-teste');
 
-for (let j = 0; j < 5; j += 1) {
-  const pixel = document.createElement('div');
-  pixel.className = 'pixel';
-  linha2.appendChild(pixel);
-}
+// for (let j = 0; j < 5; j += 1) {
+//   const pixel = document.createElement('div');
+//   pixel.className = 'pixel';
+//   linha1.appendChild(pixel);
+// }
 
-for (let j = 0; j < 5; j += 1) {
-  const pixel = document.createElement('div');
-  pixel.className = 'pixel';
-  linha3.appendChild(pixel);
-}
+// for (let j = 0; j < 5; j += 1) {
+//   const pixel = document.createElement('div');
+//   pixel.className = 'pixel';
+//   linha2.appendChild(pixel);
+// }
 
-for (let j = 0; j < 5; j += 1) {
-  const pixel = document.createElement('div');
-  pixel.className = 'pixel';
-  linha4.appendChild(pixel);
-}
+// for (let j = 0; j < 5; j += 1) {
+//   const pixel = document.createElement('div');
+//   pixel.className = 'pixel';
+//   linha3.appendChild(pixel);
+// }
 
-for (let j = 0; j < 5; j += 1) {
-  const pixel = document.createElement('div');
-  pixel.className = 'pixel';
-  linha5.appendChild(pixel);
-}
+// for (let j = 0; j < 5; j += 1) {
+//   const pixel = document.createElement('div');
+//   pixel.className = 'pixel';
+//   linha4.appendChild(pixel);
+// }
+
+// for (let j = 0; j < 5; j += 1) {
+//   const pixel = document.createElement('div');
+//   pixel.className = 'pixel';
+//   linha5.appendChild(pixel);
+// }
 
 const color1 = document.getElementById('one');
 const color2 = document.getElementById('two');
 const color3 = document.getElementById('three');
 const color4 = document.getElementById('four');
 const clear = document.getElementById('clear-board');
+const generate = document.getElementById('generate-board');
+const input = document.getElementById('board-size');
 
 const selected = 'color selected';
 const color = 'color';
 const background = 'background-color';
 let styleActual = '';
 
+// Seleciona a cor preta como inicial
 window.onload = () => {
   const init = document.getElementById('one');
   init.className += ' selected';
@@ -107,7 +112,7 @@ color3.onclick = () => {
 
   const styles3 = window.getComputedStyle(color3).getPropertyValue(background);
   styleActual = styles3;
-  console.log(`Cor de fundo: ${styles3.backgroundColor}`);
+  console.log(`Cor de fundo: ${styles3}`);
 };
 
 // Seleciona a cor 4 da paleta
@@ -122,18 +127,10 @@ color4.onclick = () => {
 
   const styles4 = window.getComputedStyle(color4).getPropertyValue(background);
   styleActual = styles4;
-  console.log(`Cor de fundo: ${styles4.backgroundColor}`);
+  console.log(`Cor de fundo: ${styles4}`);
 };
 
-// Preenche Pixel
-document.querySelectorAll('.pixel').forEach((item, index) => {
-  const el = item;
-  item.addEventListener('click', () => {
-    console.log(`click: ${index}`);
-    el.style.backgroundColor = styleActual;
-  });
-});
-
+// Limpa o board
 clear.onclick = () => {
   document.querySelectorAll('.pixel').forEach((item, index) => {
     const el = item;
@@ -142,3 +139,45 @@ clear.onclick = () => {
     el.style.backgroundColor = 'white';
   });
 };
+
+// Função que gera o board
+function generateBoard(value) {
+  for (let i = 1; i <= value; i += 1) {
+    const linha = document.createElement('div');
+    board.appendChild(linha);
+    linha.className = `linha${i}`;
+
+    for (let j = 1; j <= value; j += 1) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      linha.appendChild(pixel);
+    }
+  }
+}
+
+// Evento onClick para gerar o board
+generate.onclick = () => {
+  if (input.value === '' || input.value > 50 || input.value < 5) {
+    console.log('Board Inválido!');
+    alert('Board inválido');
+  } else {
+    generateBoard(input.value);
+  }
+};
+
+// Preenche cor no pixel
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pixel')) {
+    document.querySelectorAll('.pixel').forEach((item, index) => {
+      const el = item;
+      el.addEventListener('click', () => {
+        console.log(`click: ${index}`);
+        el.style.backgroundColor = styleActual;
+      });
+    });
+
+    console.log('evento ouvido');
+    // console.log(`elemento: ${el}`);
+    // el.style.backgroundColor = styleActual;
+  }
+}, false);
