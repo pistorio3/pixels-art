@@ -139,51 +139,55 @@ clear.onclick = () => {
 };
 
 // Função que gera o board
-// function generateBoard(value) {
-//   for (let i = 1; i <= value; i += 1) {
-//     const linha = document.createElement('div');
-//     board.appendChild(linha);
-//     linha.className = `linha${i}`;
+function generateBoard(value) {
+  for (let i = 1; i <= value; i += 1) {
+    const linha = document.createElement('div');
+    board.appendChild(linha);
+    linha.className = `linha${i}`;
 
-//     for (let j = 1; j <= value; j += 1) {
-//       const pixel = document.createElement('div');
-//       pixel.className = 'pixel';
-//       pixel.style.backgroundColor = 'rgb(255,255,255)';
-//       linha.appendChild(pixel);
-//     }
-//   }
-// }
+    for (let j = 1; j <= value; j += 1) {
+      const pixel = document.createElement('div');
+      pixel.className = 'pixel';
+      pixel.style.backgroundColor = 'rgb(255,255,255)';
+      linha.appendChild(pixel);
+    }
+  }
+}
 
 // Evento onClick para gerar o board
 generate.onclick = () => {
   if (input.value === '' || input.value > 50 || input.value < 5) {
     console.log('Board inválido!');
     alert('Board inválido!');
+  } else {
+    board.removeChild(linha1);
+    board.removeChild(linha2);
+    board.removeChild(linha3);
+    board.removeChild(linha4);
+    board.removeChild(linha5);
+    generateBoard(input.value);
   }
-  // else {
-  //   generateBoard(input.value);
-  // }
 };
 
-document.querySelectorAll('.pixel').forEach((item, index) => {
-  const el = item;
-  el.addEventListener('click', () => {
-    console.log(`click: ${index}`);
-    el.style.backgroundColor = styleActual;
-  });
-});
+// document.querySelectorAll('.pixel').forEach((item, index) => {
+//   const el = item;
+//   el.addEventListener('click', () => {
+//     console.log(`click: ${index}`);
+//     el.style.backgroundColor = styleActual;
+//   });
+// });
 
 // Preenche cor no pixel
-// document.addEventListener('click', (event) => {
-//   if (event.target.classList.contains('pixel')) {
-//     console.log('evento ouvido');
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pixel')) {
+    console.log('evento ouvido');
 
-//     document.querySelectorAll('.pixel').forEach((item, index) => {
-//       const el = item;
-//       el.addEventListener('click', () => {
-//         console.log(`click: ${index}`);
-//         el.style.backgroundColor = styleActual;
-//       });
-//     });
-//   }
-// }, false);
+    document.querySelectorAll('.pixel').forEach((item, index) => {
+      const el = item;
+      el.addEventListener('click', () => {
+        console.log(`click: ${index}`);
+        el.style.backgroundColor = styleActual;
+      });
+    });
+  }
+}, false);
