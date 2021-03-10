@@ -157,27 +157,32 @@ function generateBoard(value) {
 // Evento onClick para gerar o board
 generate.onclick = () => {
   if (input.value === '' || input.value > 50 || input.value < 5) {
-    console.log('Board Inválido!');
-    alert('Board inválido');
+    console.log('Board inválido!');
+    alert('Board inválido!');
   } else {
     generateBoard(input.value);
   }
 };
 
-document.querySelectorAll('.pixel').forEach((item, index) => {
-  const el = item;
-  el.addEventListener('click', () => {
-    console.log(`click: ${index}`);
-    el.style.backgroundColor = styleActual;
-  });
-});
+// document.querySelectorAll('.pixel').forEach((item, index) => {
+//   const el = item;
+//   el.addEventListener('click', () => {
+//     console.log(`click: ${index}`);
+//     el.style.backgroundColor = styleActual;
+//   });
+// });
 
-// // Preenche cor no pixel
-// document.addEventListener('click', (event) => {
-//   if (event.target.classList.contains('pixel')) {
+// Preenche cor no pixel
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('pixel')) {
+    console.log('evento ouvido');
 
-//     console.log('evento ouvido');
-//     // console.log(`elemento: ${el}`);
-//     // el.style.backgroundColor = styleActual;
-//   }
-// }, false);
+    document.querySelectorAll('.pixel').forEach((item, index) => {
+      const el = item;
+      el.addEventListener('click', () => {
+        console.log(`click: ${index}`);
+        el.style.backgroundColor = styleActual;
+      });
+    });
+  }
+}, false);
