@@ -47,26 +47,35 @@ for (let j = 0; j < 5; j += 1) {
   linha5.appendChild(pixel);
 }
 
-window.onload = () => {
-  const init = document.getElementById('one');
-  init.className += ' selected';
-};
-
 const color1 = document.getElementById('one');
 const color2 = document.getElementById('two');
 const color3 = document.getElementById('three');
 const color4 = document.getElementById('four');
+
 const selected = 'color selected';
+const color = 'color';
+const background = 'background-color';
+let styleActual = '';
+
+window.onload = () => {
+  const init = document.getElementById('one');
+  init.className += ' selected';
+
+  const styles = window.getComputedStyle(init).getPropertyValue(background);
+  styleActual = styles;
+};
 
 color1.onclick = () => {
   color1.addEventListener('click', console.log('click one'));
   color1.className = selected;
 
-  color2.className = 'color';
-  color3.className = 'color';
-  color4.className = 'color';
-  // const styles = window.getComputedStyle(color1);
-  // console.log(`Cor de fundo: ${styles.backgroundColor}`);
+  color2.className = color;
+  color3.className = color;
+  color4.className = color;
+
+  const styles1 = window.getComputedStyle(color1).getPropertyValue(background);
+  styleActual = styles1;
+  console.log(`Cor de fundo: ${styles1}`);
 };
 
 color2.onclick = () => {
@@ -74,11 +83,13 @@ color2.onclick = () => {
 
   color2.className = selected;
 
-  color1.className = 'color';
-  color3.className = 'color';
-  color4.className = 'color';
-  // const styles = window.getComputedStyle(color2);
-  // console.log(`Cor de fundo: ${styles.backgroundColor}`);
+  color1.className = color;
+  color3.className = color;
+  color4.className = color;
+
+  const styles2 = window.getComputedStyle(color2).getPropertyValue(background);
+  styleActual = styles2;
+  console.log(`Cor de fundo: ${styles2}`);
 };
 
 color3.onclick = () => {
@@ -86,11 +97,13 @@ color3.onclick = () => {
 
   color3.className = selected;
 
-  color1.className = 'color';
-  color2.className = 'color';
-  color4.className = 'color';
-  // const styles = window.getComputedStyle(color2);
-  // console.log(`Cor de fundo: ${styles.backgroundColor}`);
+  color1.className = color;
+  color2.className = color;
+  color4.className = color;
+
+  const styles3 = window.getComputedStyle(color3).getPropertyValue(background);
+  styleActual = styles3;
+  console.log(`Cor de fundo: ${styles3.backgroundColor}`);
 };
 
 color4.onclick = () => {
@@ -98,9 +111,19 @@ color4.onclick = () => {
 
   color4.className = selected;
 
-  color1.className = 'color';
-  color2.className = 'color';
-  color3.className = 'color';
-  // const styles = window.getComputedStyle(color2);
-  // console.log(`Cor de fundo: ${styles.backgroundColor}`);
+  color1.className = color;
+  color2.className = color;
+  color3.className = color;
+
+  const styles4 = window.getComputedStyle(color4).getPropertyValue(background);
+  styleActual = styles4;
+  console.log(`Cor de fundo: ${styles4.backgroundColor}`);
 };
+
+document.querySelectorAll('.pixel').forEach((item, index) => {
+  const el = item;
+  item.addEventListener('click', () => {
+    console.log(`click: ${index}`);
+    el.style.backgroundColor = styleActual;
+  });
+});
