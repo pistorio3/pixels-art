@@ -2,16 +2,30 @@
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: "Pangolin";
+}
+
+/* UiGradients Code  */
+body {
+  background: #1d976c;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #93f9b9, #1d976c);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #93f9b9, #1d976c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.headings {
+  text-align: center;
+  padding-top: 15px;
 }
 
 #title {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 60px;
 }
 
 #color-palette {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 15px;
 }
 
 .color {
@@ -43,7 +57,7 @@
 
 #pixel-board {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 10px;
 }
 
 .li {
@@ -57,6 +71,10 @@
   width: 40px;
   display: inline-block;
   background-color: white;
+}
+
+.pixel:hover {
+  cursor: pointer;
 }
 
 .color-selected {
